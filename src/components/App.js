@@ -1,4 +1,7 @@
 import React from 'react';
+import FolderForm from './FolderForm.js';
+import NoteList from './NoteList.js';
+import Note from './Note.js';
 
 const data = {
   folders: [ {
@@ -36,10 +39,18 @@ const data = {
 
 const App = props => {
   return (
-    <div>
+    <div className="row">
+      <div className="small-4 large-4 columns">
+        <FolderForm />
+      </div>
+      <div className="small-4 large-4 columns">
+        <NoteList />
+      </div>
+      <div className="small-4 large-4 columns">
+        <Note />
+      </div>
     </div>
   );
 };
 
 export default App;
-
