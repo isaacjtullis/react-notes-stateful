@@ -43,10 +43,12 @@ class App extends React.Component {
     super(props)
     this.state = {
       folders: [],
-      name: ''
+      name: '',
+      selectedFolder: 0
     }
     this.handleFormSubmit = this.handleFormSubmit.bind(this)
     this.handleNewFolderName = this.handleNewFolderName.bind(this)
+    this.handleFolderSelected = this.handleFolderSelected.bind(this)
   }
 
   handleNewFolderName(event){
@@ -69,12 +71,24 @@ class App extends React.Component {
     })
   }
 
+  handleFolderSelected(id){
+    let selectedFolder = id
+    this.setState({ selectedFolder: selectedFolder})
+  }
+
   render() {
     return(
       <div className="row">
         <div className="small-4 large-4 columns">
-          <FolderForm name={this.state.name} handleNewFolderName={this.handleNewFolderName} handleFormSubmit={this.handleFormSubmit}/>
-          <FolderList folders={this.state.folders} />
+          <FolderForm
+            name={this.state.name}
+            handleNewFolderName={this.handleNewFolderName}
+            handleFormSubmit={this.handleFormSubmit}
+          />
+          <FolderList
+            folders={this.state.folders}
+            selectedFolder={this.state.selectedFolder}
+            handleFolderSelected={this.handleFolderSelected} />
         </div>
         <div className="small-4 large-4 columns">
           <NoteList />

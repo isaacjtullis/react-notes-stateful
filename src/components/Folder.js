@@ -2,8 +2,8 @@ import React from 'react'
 
 const Folder = props => {
   return (
-    <div className="">
-      <li>{props.name}</li>
+    <div>
+      <li className={props.folderSelected} onClick={props.handleFolderSelected}>{props.name}</li>
     </div>
   );
 };
