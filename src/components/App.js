@@ -47,7 +47,7 @@ class App extends React.Component {
       folders: [],
       notes: [],
       folderName: '',
-      noteName: 'New Note',
+      noteName: '',
       selectedFolder: 0
     }
     this.handleFormSubmit = this.handleFormSubmit.bind(this)
@@ -81,8 +81,8 @@ class App extends React.Component {
     this.setState({ selectedFolder: selectedFolder})
   }
 
-  handleNewNoteName(event){
-    let newName = event.target.value
+  handleNewNoteName(){
+    let newName = "New Note"
     this.setState({ noteName: newName})
   }
 
@@ -116,11 +116,12 @@ class App extends React.Component {
         <div className="small-4 large-4 columns">
           <NoteForm
             noteName={this.state.noteName}
-            handleNewNoteName={this.handleNewNoteName}
             handleNoteFormSubmit={this.handleNoteFormSubmit}
+            handleNewNoteName={this.handleNewNoteName}
            />
           <NoteList
             notes={this.state.notes}
+            name={this.state.noteName}
           />
         </div>
         <div className="small-4 large-4 columns">
