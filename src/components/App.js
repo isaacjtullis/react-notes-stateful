@@ -2,6 +2,7 @@ import React from 'react';
 import FolderForm from './FolderForm.js';
 import NoteList from './NoteList.js';
 import Note from './Note.js';
+import FolderList from './FolderList.js';
 
 const data = {
   folders: [ {
@@ -37,20 +38,52 @@ const data = {
   selectedNoteId: 2
 };
 
-const App = props => {
-  return (
-    <div className="row">
-      <div className="small-4 large-4 columns">
-        <FolderForm />
+class App extends React.Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      folders: [],
+      name: ''
+    }
+    this.handleFormSubmit = this.handleFormSubmit.bind(this)
+    this.handleNewFolderName = this.handleNewFolderName.bind(this)
+  }
+
+  handleNewFolderName(event){
+    let newName = event.target.value
+    this.setState({ name: newName})
+
+  }
+
+  handleFormSubmit(event){
+    event.preventDefault()
+    let newId = this.state.folders.length
+    let newForm = {
+      id: newId,
+      name: this.state.name
+    }
+    let newForms =  [...this.state.folders, newForm]
+    this.setState({
+      folders: newForms,
+      name: ''
+    })
+  }
+
+  render() {
+    return(
+      <div className="row">
+        <div className="small-4 large-4 columns">
+          <FolderForm name={this.state.name} handleNewFolderName={this.handleNewFolderName} handleFormSubmit={this.handleFormSubmit}/>
+        </div>
+        <div className="small-4 large-4 columns">
+          <NoteList />
+        </div>
+        <div className="small-4 large-4 columns">
+          <FolderList />
+        </div>
       </div>
-      <div className="small-4 large-4 columns">
-        <NoteList />
-      </div>
-      <div className="small-4 large-4 columns">
-        <Note />
-      </div>
-    </div>
-  );
+    );
+  }
 };
 
 export default App;
