@@ -5,13 +5,12 @@ const NoteForm = props => {
     <form onSubmit={props.handleNoteFormSubmit}>
     <div className="small-12 controls columns">
       <div className="small-4 columns">
-        <button><i className="fa fa-sticky-note-o" aria-hidden="true">New Note</i></button>
+        <button onClick={props.handleNewNoteName}><i className="fa fa-sticky-note-o" aria-hidden="true">New Note</i></button>
       </div>
       <div className="small-8 columns">
         <input
           type="text"
           placeholder="search"
-          onChange={props.handleNewNoteName}
           >
         </input>
       </div>

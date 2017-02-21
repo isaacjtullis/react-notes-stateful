@@ -5,16 +5,16 @@ class NoteList extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      noteName: '',
+      noteName: 'New Note',
     }
   }
 
   render() {
     let noteName = this.props.notes.map((note) => {
+      let name = note.nameName
       return (
         <div>
-          <Note />
-          {note.noteName}
+          <Note name={note.noteName}/>
         </div>
       )
     })
@@ -27,3 +27,6 @@ class NoteList extends React.Component {
 }
 
 export default NoteList;
+/*
+
+*/
