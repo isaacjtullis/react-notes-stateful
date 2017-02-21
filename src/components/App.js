@@ -74,12 +74,13 @@ class App extends React.Component {
       <div className="row">
         <div className="small-4 large-4 columns">
           <FolderForm name={this.state.name} handleNewFolderName={this.handleNewFolderName} handleFormSubmit={this.handleFormSubmit}/>
+          <FolderList folders={this.state.folders} />
         </div>
         <div className="small-4 large-4 columns">
           <NoteList />
         </div>
         <div className="small-4 large-4 columns">
-          <FolderList />
+          <Note />
         </div>
       </div>
     );
