@@ -3,10 +3,18 @@ import Folder from './Folder.js';
 
 const FolderList = props => {
   let folderName = props.folders.map((folder) => {
+    let handleFolderSelected = () => props.handleFolderSelected(folder.id)
+    let folderSelected = ""
+    if (props.selectedFolder === folder.id) {
+      folderSelected = "selected"
+    }
+
     return(
       <Folder
         key={folder.id}
         name={folder.name}
+        handleFolderSelected={handleFolderSelected}
+        folderSelected={folderSelected}
       />
     )
   })
