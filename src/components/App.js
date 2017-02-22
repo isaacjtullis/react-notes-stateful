@@ -4,6 +4,7 @@ import NoteList from './NoteList.js';
 import Note from './Note.js';
 import FolderList from './FolderList.js';
 import NoteForm from './NoteForm.js';
+import NoteListControls from './NoteListControls.js';
 
 
 const data = {
@@ -45,16 +46,12 @@ class App extends React.Component {
     super(props)
     this.state = {
       folders: [],
-      notes: [],
       folderName: '',
-      noteName: '',
       selectedFolder: 0
     }
     this.handleFormSubmit = this.handleFormSubmit.bind(this)
     this.handleNewFolderName = this.handleNewFolderName.bind(this)
     this.handleFolderSelected = this.handleFolderSelected.bind(this)
-    this.handleNewNoteName = this.handleNewNoteName.bind(this)
-    this.handleNoteFormSubmit = this.handleNoteFormSubmit.bind(this)
   }
 
   handleNewFolderName(event){
@@ -81,51 +78,22 @@ class App extends React.Component {
     this.setState({ selectedFolder: selectedFolder})
   }
 
-  handleNewNoteName(){
-    let newName = "New Note"
-    this.setState({ noteName: newName})
-  }
-
-  handleNoteFormSubmit(event){
-    event.preventDefault()
-    let newId = this.state.notes.length
-    let newNote = {
-      id: newId,
-      noteName: this.state.noteName
-    }
-    let newNotes = [...this.state.notes, newNote]
-    this.setState({
-      notes: newNotes,
-    })
-  }
-
   render() {
     return(
       <div className="row">
-        <div className="small-4 large-4 columns">
-          <FolderForm
-            folderName={this.state.folderName}
-            handleNewFolderName={this.handleNewFolderName}
-            handleFormSubmit={this.handleFormSubmit}
-          />
-          <FolderList
-            folders={this.state.folders}
-            selectedFolder={this.state.selectedFolder}
-            handleFolderSelected={this.handleFolderSelected} />
-        </div>
-        <div className="small-4 large-4 columns">
-          <NoteForm
-            noteName={this.state.noteName}
-            handleNoteFormSubmit={this.handleNoteFormSubmit}
-            handleNewNoteName={this.handleNewNoteName}
-           />
-          <NoteList
-            notes={this.state.notes}
-            name={this.state.noteName}
-          />
-        </div>
-        <div className="small-4 large-4 columns">
-          <Note />
+        <div className="small-12 large-12 columns">
+          <div className="small-4 large-4 columns">
+            <FolderForm
+              folderName={this.state.folderName}
+              handleNewFolderName={this.handleNewFolderName}
+              handleFormSubmit={this.handleFormSubmit}
+            />
+            <FolderList
+              folders={this.state.folders}
+              selectedFolder={this.state.selectedFolder}
+              handleFolderSelected={this.handleFolderSelected} />
+          </div>
+          <NoteListControls/>
         </div>
       </div>
     );
@@ -133,3 +101,21 @@ class App extends React.Component {
 };
 
 export default App;
+/*
+<div className="small-4 large-4 columns">
+  <FolderForm
+    folderName={this.state.folderName}
+    handleNewFolderName={this.handleNewFolderName}
+    handleFormSubmit={this.handleFormSubmit}
+  />
+  <FolderList
+    folders={this.state.folders}
+    selectedFolder={this.state.selectedFolder}
+    handleFolderSelected={this.handleFolderSelected} />
+</div>
+<div className="small-4 large-4 columns">
+  <NoteListControls/>
+</div>
+<div className="small-4 large-4 columns">
+</div>
+*/
