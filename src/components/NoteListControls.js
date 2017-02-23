@@ -44,12 +44,13 @@ class NoteListControls extends React.Component {
   }
 
   handleButtonClick(id) {
-    let noteBody = this.state.notes.filter(note => {
-      if(id === note.id){
-        console.log(note)
-      }
-    })
-    debugger
+    let newNote = {
+      id: id,
+      noteName: this.state.noteName,
+      body: this.state.body
+    }
+    this.state.notes[id] = newNote
+    this.setState({body: 'New Note'})
   }
 
   render() {
