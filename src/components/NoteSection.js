@@ -24,14 +24,3 @@ const NoteSection = (props) => {
 }
 
 export default NoteSection;
-/*
-<div className="noteForm">
-
-<input
-  type="text"
-  value={props.noteName}
-  onChange={props.handleNewNoteName}
-/>
-</div>
-
-*/
