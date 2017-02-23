@@ -9,12 +9,14 @@ class NoteListControls extends React.Component {
     super(props)
     this.state = {
       noteName: "New Note",
+      body: "",
       notes: [],
       selectedNote: null
     }
-    this.handleNewNoteName = this.handleNewNoteName.bind(this)
+    this.handleNoteBody = this.handleNoteBody.bind(this)
     this.handleNoteFormSubmit = this.handleNoteFormSubmit.bind(this)
     this.handleNoteSelected = this.handleNoteSelected.bind(this)
+    this.handleButtonClick = this.handleButtonClick.bind(this)
   }
 
   handleNoteFormSubmit(event){
@@ -22,7 +24,8 @@ class NoteListControls extends React.Component {
     let newId = this.state.notes.length
     let newNote = {
       id: newId,
-      noteName: this.state.noteName
+      noteName: this.state.noteName,
+      body: this.state.body
     }
     let newNotes = [...this.state.notes, newNote]
     this.setState({
@@ -30,10 +33,9 @@ class NoteListControls extends React.Component {
     })
   }
 
-  handleNewNoteName(event){
-
-    let newName = event.target.value
-    this.setState({ noteName: newName})
+  handleNoteBody(event){
+    let noteBody = event.target.value
+    this.setState({ body: noteBody})
   }
 
   handleNoteSelected(id){
@@ -41,7 +43,17 @@ class NoteListControls extends React.Component {
     this.setState({selectedNote: note})
   }
 
+  handleButtonClick(id) {
+    let noteBody = this.state.notes.filter(note => {
+      if(id === note.id){
+        console.log(note)
+      }
+    })
+    debugger
+  }
+
   render() {
+    console.log(this.state.body);
     return(
       <div>
         <div className="small-4 large-4 columns">
@@ -50,14 +62,18 @@ class NoteListControls extends React.Component {
           />
           <NoteList
             notes={this.state.notes}
+            name={this.state.noteName}
             handleNoteSelected={this.handleNoteSelected}
             selectedNote={this.state.selectedNote}
           />
         </div>
         <div className="small-4 large-4 columns">
           <NoteSection
-            handleNewNoteName={this.handleNewNoteName}
+            handleNoteBody={this.handleNoteBody}
             handleNoteSelected={this.handleNoteSelected}
+            notes={this.state.notes}
+            selectedNote={this.state.selectedNote}
+            handleButtonClick={this.handleButtonClick}
           />
         </div>
       </div>
@@ -67,6 +83,12 @@ class NoteListControls extends React.Component {
 
 export default NoteListControls;
 /*
+<div className="small-4 large-4 columns">
+  <NoteSection
+    handleNewNoteName={this.handleNewNoteName}
+    handleNoteSelected={this.handleNoteSelected}
+  />
+</div>
 return(
   <Note
     name={this.props.noteName}
