@@ -9,7 +9,7 @@ class NoteListControls extends React.Component {
     super(props)
     this.state = {
       noteName: "New Note",
-      body: "",
+      body: "New Note",
       notes: [],
       selectedNote: null
     }
@@ -50,6 +50,11 @@ class NoteListControls extends React.Component {
       body: this.state.body
     }
     this.state.notes[id] = newNote
+    if(newNote.body.length < 36) {
+      this.state.notes[id].noteName = this.state.body
+    } else {
+      this.state.notes[id].noteName = "Noted"
+    }
     this.setState({body: 'New Note'})
   }
 
@@ -62,7 +67,6 @@ class NoteListControls extends React.Component {
           />
           <NoteList
             notes={this.state.notes}
-            name={this.state.noteName}
             handleNoteSelected={this.handleNoteSelected}
             selectedNote={this.state.selectedNote}
           />
