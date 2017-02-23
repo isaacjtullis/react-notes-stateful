@@ -101,21 +101,3 @@ class App extends React.Component {
 };
 
 export default App;
-/*
-<div className="small-4 large-4 columns">
-  <FolderForm
-    folderName={this.state.folderName}
-    handleNewFolderName={this.handleNewFolderName}
-    handleFormSubmit={this.handleFormSubmit}
-  />
-  <FolderList
-    folders={this.state.folders}
-    selectedFolder={this.state.selectedFolder}
-    handleFolderSelected={this.handleFolderSelected} />
-</div>
-<div className="small-4 large-4 columns">
-  <NoteListControls/>
-</div>
-<div className="small-4 large-4 columns">
-</div>
-*/

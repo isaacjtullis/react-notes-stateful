@@ -23,10 +23,5 @@ const NoteList = props => {
     </div>
   )
 }
-//I need an array of notes to be passed here and then when I selected the id of the note it shows the
-//content of the note
 
 export default NoteList;
-/*
-
-*/

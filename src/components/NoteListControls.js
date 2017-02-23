@@ -54,7 +54,6 @@ class NoteListControls extends React.Component {
   }
 
   render() {
-    console.log(this.state.body);
     return(
       <div>
         <div className="small-4 large-4 columns">
@@ -83,17 +82,3 @@ class NoteListControls extends React.Component {
 }
 
 export default NoteListControls;
-/*
-<div className="small-4 large-4 columns">
-  <NoteSection
-    handleNewNoteName={this.handleNewNoteName}
-    handleNoteSelected={this.handleNoteSelected}
-  />
-</div>
-return(
-  <Note
-    name={this.props.noteName}
-    handleNewNoteName={this.props.handleNewNoteName}
-  />
-)
-*/

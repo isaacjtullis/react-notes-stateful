@@ -10,22 +10,5 @@ const Note = props => {
     </div>
   );
 }
-//This file will pass in the handleNotenameChange and will pass it into noteFORM so i need
-//to change things around a bit.
-export default Note;
 
-/*
-<div className="noteForm">
-  {props.name}
-  <input
-    type="text"
-    value={props.name}
-    onChange={props.handleNewNoteName}
-  />
-</div>
-<input
-  type="text"
-  value={props.noteName}
-  onChange={props.handleNewNoteName}
-/>
-*/
+export default Note;
