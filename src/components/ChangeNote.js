@@ -6,6 +6,7 @@ const ChangeNote = (props) => {
       <button type="button" onClick={props.handleButtonClick}>Update</button>
       <input
         type="text"
+        placeholder={props.body}
         value={props.noteName}
         onChange={props.handleNoteBody}
       />
